@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevSecOps Mastery Roadmap — Full Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07070d;
+  --surface: #0f0f18;
+  --card: #13131e;
+  --card2: #17172a;
+  --border: #1c1c30;
+  --accent: #00ff88;
+  --accent2: #ff6b35;
+  --accent3: #7c6cff;
+  --accent4: #ffcc00;
+  --text: #e4e4f0;
+  --muted: #5a5a78;
+  --sub: #9090b0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,255,136,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px 100px;position:relative;z-index:1;}
+
+/* HEADER */
+header{padding:56px 0 40px;border-bottom:1px solid var(--border);margin-bottom:40px;}
+.badge{display:inline-block;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.25);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;padding:4px 14px;border-radius:2px;margin-bottom:18px;text-transform:uppercase;}
+h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:12px;}
+h1 em{color:var(--accent);font-style:normal;}
+.sub{color:var(--muted);font-size:13px;font-family:'JetBrains Mono',monospace;margin-bottom:28px;}
+.hstats{display:flex;gap:28px;flex-wrap:wrap;}
+.hstat{display:flex;flex-direction:column;gap:3px;}
+.hstat-v{font-size:26px;font-weight:800;color:var(--accent);font-family:'JetBrains Mono',monospace;}
+.hstat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;}
+
+/* GLOBAL TIMER PANEL */
+.timer-panel{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.timer-panel-title{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+.global-clock{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--accent);letter-spacing:2px;}
+.timer-btns{display:flex;gap:8px;margin-left:auto;}
+.tbtn{font-family:'JetBrains Mono',monospace;font-size:11px;padding:8px 18px;border-radius:4px;border:none;cursor:pointer;font-weight:700;letter-spacing:1px;transition:all 0.2s;text-transform:uppercase;}
+.tbtn-start{background:var(--accent);color:#000;}
+.tbtn-start:hover{background:#00dd77;}
+.tbtn-stop{background:rgba(255,107,53,0.2);color:var(--accent2);border:1px solid rgba(255,107,53,0.4);}
+.tbtn-stop:hover{background:rgba(255,107,53,0.3);}
+.tbtn-reset{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border);}
+.tbtn-reset:hover{color:var(--text);}
+.total-studied{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+.total-studied span{color:var(--accent4);}
+
+/* PROGRESS */
+.prog-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:32px;}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.prog-label{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+.prog-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);}
+.prog-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:8px;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:4px;transition:width 0.5s ease;}
+.prog-sub{display:flex;gap:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+.prog-sub span{color:var(--text);}
+
+/* SALARY BOX */
+.salary-box{background:linear-gradient(135deg,rgba(0,255,136,0.04),rgba(124,108,255,0.04));border:1px solid rgba(0,255,136,0.15);border-radius:10px;padding:24px;text-align:center;margin-bottom:32px;}
+.sal-amt{font-size:52px;font-weight:800;color:var(--accent);font-family:'JetBrains Mono',monospace;line-height:1;}
+.sal-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin:8px 0 18px;}
+.sal-tiers{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;}
+.sal-tier{text-align:center;}
+.sal-tier-v{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;}
+.sal-tier-l{font-size:10px;color:var(--muted);margin-top:3px;}
+
+/* PRIORITY */
+.prio{background:linear-gradient(135deg,rgba(255,107,53,0.07),rgba(124,108,255,0.07));border:1px solid rgba(255,107,53,0.2);border-radius:10px;padding:18px 22px;margin-bottom:32px;}
+.prio h3{color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;font-family:'JetBrains Mono',monospace;}
+.ptags{display:flex;flex-wrap:wrap;gap:8px;}
+.ptag{background:rgba(255,107,53,0.12);border:1px solid rgba(255,107,53,0.25);color:var(--accent2);font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 12px;border-radius:3px;}
+
+/* SECTION */
+.section{margin-bottom:44px;}
+.sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.sec-ico{font-size:18px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);border-radius:6px;flex-shrink:0;}
+.sec-title{font-size:17px;font-weight:700;}
+.sec-cnt{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);background:rgba(0,255,136,0.08);padding:2px 8px;border-radius:2px;margin-left:6px;}
+.sec-meta{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);}
+
+/* TOOLBAR */
+.toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.tbtn2{font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 12px;border-radius:3px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;transition:all 0.2s;text-transform:uppercase;letter-spacing:1px;}
+.tbtn2:hover{border-color:var(--accent);color:var(--accent);}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
+.grid-wide{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
+
+/* TOPIC CARD */
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+.tcard:hover{border-color:rgba(0,255,136,0.2);box-shadow:0 4px 24px rgba(0,0,0,0.4);}
+.tcard.completed{border-color:rgba(0,255,136,0.4);background:rgba(0,255,136,0.03);}
+.tcard.completed .card-hdr{background:rgba(0,255,136,0.04);}
+
+/* CARD HEADER */
+.card-hdr{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;user-select:none;}
+.card-ico{font-size:20px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:6px;flex-shrink:0;}
+.card-info{flex:1;min-width:0;}
+.card-name{font-size:14px;font-weight:700;margin-bottom:3px;}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.lvl{font-size:9px;font-family:'JetBrains Mono',monospace;padding:2px 7px;border-radius:2px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+.lvl-must{background:rgba(0,255,136,0.12);color:var(--accent);}
+.lvl-bonus{background:rgba(124,108,255,0.15);color:var(--accent3);border:1px solid rgba(124,108,255,0.3);}
+.lvl-add{background:rgba(255,107,53,0.12);color:var(--accent2);}
+.lvl-bonus{background:rgba(124,108,255,0.12);color:var(--accent3);}
+.card-time-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent4);background:rgba(255,204,0,0.08);padding:2px 7px;border-radius:2px;}
+.card-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;}
+.expand-arrow{color:var(--muted);font-size:12px;transition:transform 0.3s;}
+.tcard.open .expand-arrow{transform:rotate(180deg);}
+
+/* CARD TIMER ROW */
+.card-timer-row{display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--surface);border-top:1px solid var(--border);}
+.mini-clock{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent4);min-width:60px;}
+.mini-btn{font-family:'JetBrains Mono',monospace;font-size:9px;padding:4px 10px;border-radius:3px;border:none;cursor:pointer;font-weight:700;letter-spacing:0.5px;transition:all 0.2s;text-transform:uppercase;}
+.mini-start{background:rgba(0,255,136,0.15);color:var(--accent);}
+.mini-start:hover{background:rgba(0,255,136,0.25);}
+.mini-stop{background:rgba(255,107,53,0.15);color:var(--accent2);}
+.mini-stop:hover{background:rgba(255,107,53,0.25);}
+.mini-reset{background:rgba(255,255,255,0.04);color:var(--muted);}
+.complete-btn{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9px;padding:4px 12px;border-radius:3px;border:1px solid rgba(0,255,136,0.3);background:rgba(0,255,136,0.08);color:var(--accent);cursor:pointer;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;transition:all 0.2s;}
+.complete-btn:hover{background:rgba(0,255,136,0.2);}
+.complete-btn.done{background:var(--accent);color:#000;border-color:var(--accent);}
+
+/* CARD BODY */
+.card-body{display:none;padding:0 16px 16px;}
+.tcard.open .card-body{display:block;}
+.cb-inner{padding-top:14px;}
+
+/* SUBTOPIC */
+.sub-title{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--accent3);font-family:'JetBrains Mono',monospace;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid rgba(124,108,255,0.15);}
+
+/* CHECKLIST */
+.chk-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.chk-list li{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.55;color:var(--sub);}
+.chk-list li.done-item{color:var(--muted);text-decoration:line-through;}
+.chkbox{width:15px;height:15px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;margin-top:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;background:var(--surface);}
+.chkbox:hover{border-color:var(--accent);}
+.chkbox.on{background:var(--accent);border-color:var(--accent);}
+.chkbox.on::after{content:'✓';color:#000;font-size:9px;font-weight:900;}
+
+/* NOTE BOX */
+.note{background:rgba(124,108,255,0.07);border-left:3px solid var(--accent3);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:12px;font-size:11px;color:var(--sub);line-height:1.6;font-family:'JetBrains Mono',monospace;}
+.note strong{color:var(--accent3);}
+
+/* INTERVIEW CARD */
+.iq-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;}
+.iq-card h4{font-size:11px;color:var(--accent3);margin-bottom:10px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1.5px;}
+.iq-list{list-style:none;}
+.iq-list li{font-size:11px;color:var(--sub);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'JetBrains Mono',monospace;line-height:1.5;}
+.iq-list li:last-child{border-bottom:none;}
+.iq-list li::before{content:'→ ';color:var(--accent);}
+.iq-list li .ans{display:block;color:var(--muted);font-size:10px;margin-top:3px;padding-left:14px;}
+
+/* TIMELINE */
+.timeline{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:40px;}
+.tl-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;position:relative;overflow:hidden;}
+.tl-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.tl-item:nth-child(1)::before{background:var(--accent);}
+.tl-item:nth-child(2)::before{background:var(--accent3);}
+.tl-item:nth-child(3)::before{background:var(--accent2);}
+.tl-item:nth-child(4)::before{background:var(--accent4);}
+.tl-month{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;}
+.tl-focus{font-size:13px;font-weight:700;margin-bottom:8px;line-height:1.4;}
+.tl-tasks{font-size:11px;color:var(--muted);line-height:1.7;font-family:'JetBrains Mono',monospace;}
+.tl-tasks li{list-style:none;padding:0;}
+.tl-tasks li::before{content:'• ';}
+
+/* RESPONSIVE */
+@media(max-width:600px){.grid,.grid-wide{grid-template-columns:1fr;}.hstats{gap:16px;}.sal-tiers{gap:16px;}.timer-panel{gap:12px;}.global-clock{font-size:24px;}}
+
+/* STUDY ORDER */
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:700px){.order-grid{grid-template-columns:1fr;}}
+.order-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start;transition:border-color 0.2s;}
+.order-card:hover{border-color:rgba(0,255,136,0.2);}
+.order-card.order-highlight{border-color:rgba(255,204,0,0.35);background:linear-gradient(135deg,rgba(255,204,0,0.04),rgba(0,255,136,0.04));}
+.order-num{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:800;color:var(--border);min-width:32px;line-height:1;padding-top:2px;}
+.order-card.order-highlight .order-num{color:var(--accent4);}
+.order-name{font-size:13px;font-weight:700;margin-bottom:5px;}
+.order-why{font-size:11px;color:var(--sub);line-height:1.6;font-family:'JetBrains Mono',monospace;}
+
+/* SESSION DATES */
+.session-dates-row{font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.sdate-lbl{color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.sdate-val{color:var(--accent4);font-weight:700;}
+.topic-dates{font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 14px 8px;display:flex;gap:14px;flex-wrap:wrap;}
+.topic-dates .sdate-lbl{color:var(--muted);}
+.topic-dates .sdate-val{color:var(--accent4);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.section{animation:fadeUp 0.4s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="badge">// DevSecOps Mastery Roadmap 2025</div>
+  <h1>Complete DevSecOps <em>Mastery Guide</em><br>Full Detailed Roadmap</h1>
+  <p class="sub">fresher · CKA + CKS · 6mo internship KGISL GSS Coimbatore · full DevOps stack</p>
+  <div class="hstats">
+    <div class="hstat"><div class="hstat-v" id="totalTopics">0</div><div class="hstat-l">Total Topics</div></div>
+    <div class="hstat"><div class="hstat-v" id="doneCount">0</div><div class="hstat-l">Completed</div></div>
+    <div class="hstat"><div class="hstat-v">14</div><div class="hstat-l">Tools</div></div>
+    <div class="hstat"><div class="hstat-v" id="totalTimeDisp">00:00</div><div class="hstat-l">Total Studied</div></div>
+  </div>
+</header>
+
+<div class="timer-panel">
+  <div>
+    <div class="timer-panel-title">⏱ Study Session Timer</div>
+    <div class="global-clock" id="globalClock">00:00:00</div>
+    <div class="total-studied">Total studied all time: <span id="allTimeDisp">00h 00m</span></div>
+    <div class="session-dates-row">
+      <span class="sdate-lbl">Started:</span> <span class="sdate-val" id="gStartDate">—</span>
+      &nbsp;&nbsp;
+      <span class="sdate-lbl">Ended:</span> <span class="sdate-val" id="gEndDate">—</span>
+    </div>
+  </div>
+  <div class="timer-btns">
+    <button class="tbtn tbtn-start" onclick="globalStart()">▶ Start</button>
+    <button class="tbtn tbtn-stop" onclick="globalStop()">⏸ Pause</button>
+    <button class="tbtn tbtn-reset" onclick="globalReset()">↺ Reset</button>
+  </div>
+</div>
+
+<div class="prog-box">
+  <div class="prog-row">
+    <span class="prog-label">Overall Readiness</span>
+    <span class="prog-num" id="progPct">0%</span>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-sub">Checked: <span id="chkDone">0</span> / <span id="chkTotal">0</span> &nbsp;|&nbsp; Completed Topics: <span id="topicDone">0</span> / <span id="topicTotal">0</span></div>
+</div>
+
+<div class="prio">
+  <h3>⚡ Add These 3 NOW — Highest Demand in Interviews</h3>
+  <div class="ptags">
+    <span class="ptag">☁️ AWS — Most Asked in Interviews</span>
+    <span class="ptag">🔄 ArgoCD — GitOps is Trending</span>
+    <span class="ptag">🐙 GitHub Actions — Jenkins Replacement</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-hdr">
+    <div class="sec-ico">📅</div>
+    <div class="sec-title">8-Month Master Study Plan</div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-month">Apr 22 – May 15</div>
+      <div class="tl-focus">Phase 1 — Linux Foundation</div>
+      <ul class="tl-tasks">
+        <li>🐧 Linux CLI — full deep dive (3.5 weeks)</li>
+        <li>File system, permissions, processes, networking</li>
+        <li>grep, awk, sed, cron, systemctl — muscle memory</li>
+        <li>Goal: troubleshoot any Linux issue without Googling basics</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">May 16 – May 31</div>
+      <div class="tl-focus">Phase 2 — Git + Bash + Python Basics</div>
+      <ul class="tl-tasks">
+        <li>🔀 Git — branching, rebase, merge conflicts, GitFlow (5 days)</li>
+        <li>💻 Bash scripting — loops, functions, error handling (5 days)</li>
+        <li>🐍 Python basics — variables, loops, functions, file I/O (4 days)</li>
+        <li>Goal: automate a real task with bash + write a Python script</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Jun 1 – Jun 20</div>
+      <div class="tl-focus">Phase 3 — Docker Deep Dive</div>
+      <ul class="tl-tasks">
+        <li>🐳 Docker — Dockerfile, multi-stage builds, Compose, networking (3 weeks)</li>
+        <li>Build + run a real app in Docker</li>
+        <li>⭐ Jun 17–20: BUY CKA + CKS bundle at 50% off! Don't miss this!</li>
+        <li>Goal: containerize any app confidently, understand layers + volumes</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Jun 21 – Aug 10</div>
+      <div class="tl-focus">Phase 4 — Kubernetes (CKA Prep) ☸️</div>
+      <ul class="tl-tasks">
+        <li>☸️ K8s architecture → workloads → networking → storage → security</li>
+        <li>KodeKloud CKA course (Mumshad) + killer.sh simulator daily</li>
+        <li>Practice etcd backup, cluster upgrade, RBAC, troubleshooting</li>
+        <li>⭐ Take CKA Exam: target first week of August</li>
+        <li>Goal: pass CKA — this is your biggest milestone</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Aug 11 – Sep 10</div>
+      <div class="tl-focus">Phase 5 — IaC + Config Management</div>
+      <ul class="tl-tasks">
+        <li>🏗️ Terraform — providers, state, modules, AWS provisioning (2.5 weeks)</li>
+        <li>⚙️ Ansible — playbooks, roles, vault, real server automation (1.5 weeks)</li>
+        <li>Provision AWS EC2 + EKS with Terraform from scratch</li>
+        <li>Goal: full infra-as-code workflow end to end</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Sep 11 – Oct 10</div>
+      <div class="tl-focus">Phase 6 — CI/CD Pipeline + Security Tools</div>
+      <ul class="tl-tasks">
+        <li>🔁 Jenkins — Jenkinsfile, multibranch, agents, integrations (1.5 weeks)</li>
+        <li>🐙 GitHub Actions — workflow YAML, secrets, matrix builds (1 week)</li>
+        <li>🔍 SonarQube — quality gates, Jenkins integration (4 days)</li>
+        <li>🛡️ Trivy — image scanning, CI integration, SBOM (3 days)</li>
+        <li>Goal: build a full CI/CD pipeline: code → scan → build → deploy</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Oct 11 – Nov 10</div>
+      <div class="tl-focus">Phase 7 — Cloud + GitOps + Monitoring</div>
+      <ul class="tl-tasks">
+        <li>☁️ AWS — EC2, S3, IAM, VPC, EKS, ECR, CloudWatch (2.5 weeks)</li>
+        <li>🔄 ArgoCD — GitOps, app of apps, sync policies (1 week)</li>
+        <li>📊 Prometheus + Grafana — PromQL, alertmanager, K8s dashboards (1 week)</li>
+        <li>🐍 Python boto3 — AWS automation scripts (3 days)</li>
+        <li>Goal: full cloud-native stack running on AWS + GitOps deploy</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Nov 11 – Dec 10</div>
+      <div class="tl-focus">Phase 8 — CKS Prep + Exam 🛡️</div>
+      <ul class="tl-tasks">
+        <li>🛡️ CKS — cluster hardening, Falco, AppArmor, Seccomp, supply chain (4 weeks)</li>
+        <li>KodeKloud CKS course + killer.sh CKS simulator</li>
+        <li>Practice: kube-bench, OPA Gatekeeper, audit logging, Trivy k8s</li>
+        <li>⭐ Take CKS Exam: first week of December</li>
+        <li>Goal: pass CKS — now you have CKA + CKS which is rare for a fresher</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Dec 11 – Dec 31</div>
+      <div class="tl-focus">Phase 9 — Projects + Interview Grind 🎯</div>
+      <ul class="tl-tasks">
+        <li>Finish all 3 GitHub projects with clean READMEs</li>
+        <li>System Design basics: load balancer, microservices, K8s architecture</li>
+        <li>DSA: 75–100 LeetCode easy/medium in Python</li>
+        <li>Mock interviews daily — Pramp + peers</li>
+        <li>Apply to 30+ product/cloud companies — you're now job-ready</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-hdr">
+    <div class="sec-ico">🛠️</div>
+    <div class="sec-title">Complete Tool Mastery Guide <span class="sec-cnt">19 tools</span></div>
+    <div class="sec-meta">click card to expand · click ✓ boxes to track</div>
+  </div>
+  <div style="margin-bottom:18px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--accent3);margin-bottom:10px;padding:6px 0;border-bottom:1px solid rgba(124,108,255,0.2);">📚 Correct Order to Study These Tools</div>
+    <div class="order-grid">
+      <div class="order-card"><div class="order-num">01</div><div class="order-info"><div class="order-name">🐧 Linux CLI</div><div class="order-why">Everything runs on Linux. K8s nodes, Docker containers, servers — all Linux. Without this you can't debug anything. Must be first.</div></div></div>
+      <div class="order-card"><div class="order-num">02</div><div class="order-info"><div class="order-name">🔀 Git</div><div class="order-why">Every tool and every project uses Git. You need it from day 1. Learn it early so it becomes second nature.</div></div></div>
+      <div class="order-card"><div class="order-num">03</div><div class="order-info"><div class="order-name">💻 Bash Scripting</div><div class="order-why">DevSecOps is automation. Bash automates Linux tasks. You'll use it in Jenkins, K8s init scripts, and health checks.</div></div></div>
+      <div class="order-card"><div class="order-num">04</div><div class="order-info"><div class="order-name">🐍 Python</div><div class="order-why">For AWS boto3 automation, CLI tools, and DSA. Learn after Bash so you understand why Python is more powerful.</div></div></div>
+      <div class="order-card"><div class="order-num">05</div><div class="order-info"><div class="order-name">🐳 Docker</div><div class="order-why">Containers before Kubernetes is non-negotiable. K8s orchestrates containers — you must understand what you're orchestrating.</div></div></div>
+      <div class="order-card order-highlight"><div class="order-num">06</div><div class="order-info"><div class="order-name">☸️ Kubernetes + CKA ⭐</div><div class="order-why">The core of modern DevSecOps. Biggest investment, biggest return. Buy the bundle Jun 17–20 at 50% off. Take CKA in August.</div></div></div>
+      <div class="order-card"><div class="order-num">07</div><div class="order-info"><div class="order-name">🏗️ Terraform</div><div class="order-why">After K8s you understand what infra looks like. Terraform provisions the cluster and cloud resources declaratively.</div></div></div>
+      <div class="order-card"><div class="order-num">08</div><div class="order-info"><div class="order-name">⚙️ Ansible</div><div class="order-why">After Terraform (infra) comes Ansible (config inside the infra). They complement each other — learn together.</div></div></div>
+      <div class="order-card"><div class="order-num">09</div><div class="order-info"><div class="order-name">🔁 Jenkins</div><div class="order-why">CI/CD comes after you know what to build and deploy. Jenkins orchestrates Docker + K8s + Sonar + Trivy into a pipeline.</div></div></div>
+      <div class="order-card"><div class="order-num">10</div><div class="order-info"><div class="order-name">🐙 GitHub Actions</div><div class="order-why">After Jenkins you understand CI/CD concepts. GitHub Actions is simpler and increasingly replacing Jenkins — easier to learn second.</div></div></div>
+      <div class="order-card"><div class="order-num">11</div><div class="order-info"><div class="order-name">🔍 SonarQube</div><div class="order-why">Plugs into your Jenkins/GHA pipeline. Learn after pipelines are set up so you can immediately integrate it.</div></div></div>
+      <div class="order-card"><div class="order-num">12</div><div class="order-info"><div class="order-name">🛡️ Trivy</div><div class="order-why">Image + filesystem scanner. Add to CI pipeline right after SonarQube. Together they form your security gate.</div></div></div>
+      <div class="order-card"><div class="order-num">13</div><div class="order-info"><div class="order-name">☁️ AWS</div><div class="order-why">Cloud comes after you know what you're putting in it. K8s on EKS, infra with Terraform, pipelines deploying to AWS — all connect now.</div></div></div>
+      <div class="order-card"><div class="order-num">14</div><div class="order-info"><div class="order-name">🔄 ArgoCD</div><div class="order-why">GitOps layer on top of K8s + Git. You need K8s and Git mastery first. This is the bridge that makes deployment elegant.</div></div></div>
+      <div class="order-card"><div class="order-num">15</div><div class="order-info"><div class="order-name">📊 Prometheus + Grafana</div><div class="order-why">Monitor what you've built. Comes after your full stack is running. PromQL needs K8s understanding to make sense.</div></div></div>
+      <div class="order-card order-highlight"><div class="order-num">16</div><div class="order-info"><div class="order-name">🛡️ CKS ⭐</div><div class="order-why">CKA must be active. Everything you learned (Trivy, Falco, NetworkPolicy, RBAC) comes together here. Take exam in December.</div></div></div>
+      <div class="order-card"><div class="order-num">17</div><div class="order-info"><div class="order-name">📐 System Design</div><div class="order-why">After building real systems you can design them. K8s arch, CI/CD design, microservices — now it makes sense practically.</div></div></div>
+      <div class="order-card"><div class="order-num">18</div><div class="order-info"><div class="order-name">📄 Resume + Projects + DSA</div><div class="order-why">Last phase — package everything you built into 3 strong GitHub projects, polish resume, grind LeetCode, start applying.</div></div></div>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button class="tbtn2" onclick="expandAll()">▼ Expand All</button>
+    <button class="tbtn2" onclick="collapseAll()">▲ Collapse All</button>
+    <button class="tbtn2" onclick="markAllDone()">✓ Mark All Done</button>
+    <button class="tbtn2" onclick="resetAll()">↺ Reset All</button>
+  </div>
+  <div class="grid" id="toolGrid">
+
+    <div class="tcard" id="card-cka">
+      <div class="card-hdr" onclick="toggleCard('cka')">
+        <div class="card-ico">☸️</div>
+        <div class="card-info">
+          <div class="card-name">CKA — Certified Kubernetes Administrator</div>
+          <div class="card-tags"><span class="lvl lvl-must">CERT</span><span class="card-time-badge" id="time-cka">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-cka">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-cka">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('cka',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('cka',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('cka',event)">↺</button>
+        <button class="complete-btn" id="cbtn-cka" onclick="markComplete('cka',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📋 Exam Overview</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Duration: 2 hours — fully hands-on, performance-based exam (no MCQs)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Platform: killer.sh simulator (2 free attempts with exam voucher)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Passing score: 66% — 17 tasks across ~25 questions</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Open-book: kubernetes.io/docs allowed — practice navigating fast</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Cost: $395 USD (includes 1 free retake)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Valid: 3 years from date of passing</li>
+          </ul>
+          <div class="sub-title">🏗️ Core Architecture (25%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Control plane: kube-apiserver, etcd, kube-scheduler, kube-controller-manager</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Worker node: kubelet, kube-proxy, container runtime (containerd)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubeadm init — bootstrap a cluster from scratch</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubeadm join — add worker nodes with token</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>etcd backup: ETCDCTL_API=3 etcdctl snapshot save — must know by heart</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>etcd restore from snapshot — restore cluster state</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Upgrade cluster: kubeadm upgrade plan → apply → kubelet → kubectl</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Static pods: /etc/kubernetes/manifests/ — apiserver, scheduler, etcd live here</li>
+          </ul>
+          <div class="sub-title">⚙️ Workloads & Scheduling (15%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Pod, ReplicaSet, Deployment, DaemonSet, StatefulSet, Job, CronJob</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl rollout status/history/undo deployment/myapp</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Rolling update strategy: maxSurge, maxUnavailable</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Resource requests and limits: cpu, memory — LimitRange, ResourceQuota</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>nodeSelector, nodeAffinity (required / preferred during scheduling)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Taints: kubectl taint nodes node1 key=val:NoSchedule</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Tolerations in pod spec to allow scheduling on tainted nodes</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>HPA: kubectl autoscale deployment — CPU-based scaling</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>PriorityClass — eviction order for pods under resource pressure</li>
+          </ul>
+          <div class="sub-title">🌐 Services & Networking (20%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Service types: ClusterIP, NodePort, LoadBalancer, ExternalName</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Ingress: rules, paths, TLS — nginx ingress controller</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CoreDNS — service discovery: my-svc.my-ns.svc.cluster.local</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NetworkPolicy: podSelector, namespaceSelector, ingress/egress rules</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CNI plugins: Calico (NetworkPolicy support), Flannel, Weave</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl port-forward pod/mypod 8080:80 — local testing</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Endpoints, EndpointSlices — how services route to pods</li>
+          </ul>
+          <div class="sub-title">💾 Storage (10%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>PersistentVolume (PV), PersistentVolumeClaim (PVC), StorageClass</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Access modes: ReadWriteOnce, ReadOnlyMany, ReadWriteMany</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Reclaim policies: Retain, Recycle, Delete</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Dynamic provisioning: StorageClass + provisioner (AWS EBS, NFS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Volume types: emptyDir, hostPath, configMap, secret, nfs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>VolumeMount vs Volume — know the YAML by heart</li>
+          </ul>
+          <div class="sub-title">🔐 Security (12%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>RBAC: Role, ClusterRole, RoleBinding, ClusterRoleBinding</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ServiceAccount — identity for pods to access API server</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl create role / rolebinding — imperative commands (faster in exam)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Secrets: Opaque, kubernetes.io/tls, kubernetes.io/dockerconfigjson</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ConfigMap vs Secret — when to use which</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>SecurityContext: runAsUser, runAsNonRoot, readOnlyRootFilesystem</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubeconfig: clusters, contexts, users — kubectl config use-context</li>
+          </ul>
+          <div class="sub-title">🔧 Troubleshooting (30%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl describe pod/node — Events section is your best friend</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl logs mypod --previous — logs from crashed container</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CrashLoopBackOff: check logs → OOM? wrong command? missing config?</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Pending pod: insufficient resources? node taint? no matching node?</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ImagePullBackOff: wrong image name? private registry? no pull secret?</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Node NotReady: kubectl describe node → check kubelet: systemctl status kubelet</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>journalctl -u kubelet -f — live kubelet logs on node</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl get events --sort-by='.lastTimestamp' — chronological events</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl exec -it pod -- /bin/sh — shell into container</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Fixing broken kubeconfig, missing certificates, misconfigured scheduler</li>
+          </ul>
+          <div class="sub-title">⚡ Exam Speed Tips</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>alias k=kubectl && export do="--dry-run=client -o yaml" — add to ~/.bashrc immediately</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>k run pod1 --image=nginx $do > pod.yaml — generate YAML fast</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>k create deploy d1 --image=nginx --replicas=3 $do — deployment YAML</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>k expose pod mypod --port=80 --type=NodePort $do</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use kubectl explain pod.spec.containers.securityContext — in-exam docs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Practice on killer.sh until you score 80%+ consistently</li>
+          </ul>
+          <div class="note"><strong>Study Resources:</strong> Killer.sh (must), KodeKloud CKA course, Mumshad Mannambeth (Udemy), play on local kind/minikube cluster daily. 2–3 months prep is enough if you're consistent.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-cks">
+      <div class="card-hdr" onclick="toggleCard('cks')">
+        <div class="card-ico">🛡️</div>
+        <div class="card-info">
+          <div class="card-name">CKS — Certified Kubernetes Security Specialist</div>
+          <div class="card-tags"><span class="lvl lvl-bonus">CERT+</span><span class="card-time-badge" id="time-cks">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-cks">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-cks">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('cks',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('cks',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('cks',event)">↺</button>
+        <button class="complete-btn" id="cbtn-cks" onclick="markComplete('cks',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📋 Exam Overview</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Duration: 2 hours — hands-on, performance-based (no MCQs)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Prerequisite: Active CKA certification — CKS cannot be taken without it</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Passing score: 67%</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Cost: $395 USD (includes 1 free retake)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Valid: 2 years from date of passing</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Open-book: kubernetes.io/docs + Falco/AppArmor/seccomp docs allowed</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Harder than CKA — security mindset required, not just operations</li>
+          </ul>
+          <div class="sub-title">🔒 Cluster Setup & Hardening (15%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>CIS Benchmarks for Kubernetes — know the key recommendations</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kube-bench — automated CIS benchmark checks on nodes</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Disable anonymous authentication: --anonymous-auth=false on apiserver</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>--authorization-mode=Node,RBAC — never AlwaysAllow</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Restrict API server access: --insecure-port=0, --bind-address</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NodeRestriction admission plugin — limit what kubelets can modify</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Upgrade cluster to fix CVEs — kubeadm upgrade workflow</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>TLS: rotate certificates, --tls-min-version=VersionTLS13</li>
+          </ul>
+          <div class="sub-title">🌐 Cluster Hardening (25%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>RBAC deep: least privilege, audit service accounts, remove unused bindings</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ServiceAccount: automountServiceAccountToken: false when not needed</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Limit access to etcd — only apiserver should communicate with etcd</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NetworkPolicy: default deny all, whitelist only required traffic</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Ingress + Egress NetworkPolicy — know the YAML syntax perfectly</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>GUI tools security: disable dashboard anonymous access, restrict Kubernetes dashboard</li>
+          </ul>
+          <div class="sub-title">🐳 System Hardening (15%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>AppArmor: aa-status, load profile, annotate pod with apparmor profile</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Seccomp: use RuntimeDefault or custom profile in pod securityContext</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Reduce OS attack surface: disable unused services, remove unnecessary packages</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Open ports audit: ss -tulpn, netstat — close unused ports</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Linux capabilities: drop ALL, add only required (e.g., NET_ADMIN)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>securityContext: privileged: false, allowPrivilegeEscalation: false</li>
+          </ul>
+          <div class="sub-title">🔍 Minimize Microservice Vulnerabilities (20%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Pod Security Admission (PSA): enforce, audit, warn — baseline/restricted/privileged</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>OPA Gatekeeper: ConstraintTemplate + Constraint — policy enforcement</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Secrets management: never store in env vars as plaintext — use mounted secrets</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Encrypt etcd at rest: EncryptionConfiguration with aescbc/secretbox provider</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Container sandbox: gVisor (runsc), Kata Containers — RuntimeClass</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Multi-tenancy: namespace isolation, LimitRange, ResourceQuota per team</li>
+          </ul>
+          <div class="sub-title">📦 Supply Chain Security (20%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Trivy: trivy image nginx:latest — scan before pushing to registry</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ImagePolicyWebhook — admission webhook to block vulnerable images</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Minimize base image: use distroless or alpine — fewer attack vectors</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Docker trust / image signing — verify image integrity</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Allowed registries: only pull from approved registry (OPA policy)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>SBOM (Software Bill of Materials) — trivy sbom generation</li>
+          </ul>
+          <div class="sub-title">🕵️ Runtime Security (20%)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Falco: real-time threat detection using syscall rules</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Falco rules: /etc/falco/falco_rules.yaml — detect shell in container, file write</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Custom Falco rule: - rule: "Detect Shell" condition: spawned_process and proc.name=bash</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Falco outputs: syslog, file, HTTP endpoint, Slack webhook</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Audit logging: --audit-log-path, --audit-policy-file — log API requests</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Audit policy levels: None, Metadata, Request, RequestResponse</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Immutable containers: readOnlyRootFilesystem: true in securityContext</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Detect CVEs in running pods: trivy k8s --report all cluster</li>
+          </ul>
+          <div class="sub-title">⚡ Exam Speed Tips</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Same alias trick: alias k=kubectl && export do="--dry-run=client -o yaml"</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Practice on killer.sh — CKS simulator is very close to actual exam</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Bookmark: AppArmor profiles path (/etc/apparmor.d/), Falco config path</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Know how to find and edit kube-apiserver static pod: /etc/kubernetes/manifests/kube-apiserver.yaml</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Time check: skip and flag hard questions, return after finishing easier ones</li>
+          </ul>
+          <div class="note"><strong>Study Resources:</strong> KodeKloud CKS course (Mumshad), killer.sh CKS simulator, Kim Wüstkamp's CKS notes on GitHub. Give 2–3 months after CKA. Practice Falco, AppArmor, Seccomp hands-on every day — you can't memorize these, you need muscle memory.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-linux">
+      <div class="card-hdr" onclick="toggleCard('linux')">
+        <div class="card-ico">🐧</div>
+        <div class="card-info">
+          <div class="card-name">1. Linux CLI</div>
+          <div class="card-tags">
+            <span class="lvl lvl-must">MUST</span>
+            <span class="card-time-badge" id="time-linux">00:00:00</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="expand-arrow">▼</div>
+          <div class="card-chk-mini" id="mini-linux">0/0</div>
+        </div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-linux">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('linux',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('linux',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('linux',event)">↺</button>
+        <button class="complete-btn" id="cbtn-linux" onclick="markComplete('linux',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📁 File System & Navigation</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>ls, ls -la, cd, pwd, mkdir, rm, cp, mv, touch</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>find /path -name "*.log" -type f — search files</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>locate, updatedb — fast file search</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>File permissions: r=4, w=2, x=1 — chmod 755, 644</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>chown user:group file — change ownership</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>umask — default permission mask</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ACL: setfacl, getfacl — fine-grained permissions</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Hard links vs Symbolic links — ln vs ln -s</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>df -h, du -sh — disk usage</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>lsblk, fdisk, mount, umount — block devices</li>
+          </ul>
+          <div class="sub-title">⚙️ Process Management</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>ps aux — list all processes with details</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>top, htop — interactive process viewer</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kill PID, kill -9 PID, pkill name, killall</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>jobs, bg, fg — background/foreground jobs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>nohup command & — run after logout</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>nice, renice — process priority</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>systemctl start/stop/restart/status/enable/disable service</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>journalctl -u servicename -f — service logs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>crontab -e — schedule jobs (syntax: min hr day mon dow)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>at command — one-time scheduled tasks</li>
+          </ul>
+          <div class="sub-title">🌐 Networking</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>ip addr show, ip link, ip route — modern net tools</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ifconfig, route — older tools (still asked)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>netstat -tulnp — open ports and listeners</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ss -tulnp — modern replacement for netstat</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>curl -X POST -H "Content-Type: application/json" -d '{}'</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>wget, curl -O — download files</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ping, traceroute, mtr — connectivity testing</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>nmap -sV IP — port scan and service detection</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>iptables -L, iptables -A INPUT -p tcp --dport 80 -j ACCEPT</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>firewalld: firewall-cmd --add-port=80/tcp --permanent</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ssh, ssh-keygen, ssh-copy-id, scp, rsync</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>/etc/hosts, /etc/resolv.conf, DNS troubleshooting</li>
+          </ul>
+          <div class="sub-title">📝 Text Processing (Interview Favourite)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>grep -r "pattern" /path — recursive search</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>grep -v, -i, -n, -E (extended regex)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>awk '{print $1, $3}' — column extraction</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>awk -F':' '{print $1}' /etc/passwd — custom delimiter</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>sed 's/old/new/g' file — find and replace</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>sed -n '5,10p' file — print specific lines</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>cut, sort, uniq, wc -l, head, tail</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>tail -f /var/log/syslog — live log monitoring</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>xargs, tee, pipe chaining</li>
+          </ul>
+          <div class="sub-title">🔍 Troubleshooting (Must Know)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>High CPU: top → find PID → strace -p PID</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>High Memory: free -h, vmstat, /proc/meminfo</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Disk full: df -h, du -sh /var/log/* → find & delete</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Load average: uptime — 1/5/15 min averages</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>dmesg | tail — kernel messages, hardware errors</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "How to troubleshoot high CPU?" — top → ps aux --sort=-%cpu | head → identify → strace or lsof -p PID</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-git">
+      <div class="card-hdr" onclick="toggleCard('git')">
+        <div class="card-ico">🔀</div>
+        <div class="card-info">
+          <div class="card-name">2. Git</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-git">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-git">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-git">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('git',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('git',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('git',event)">↺</button>
+        <button class="complete-btn" id="cbtn-git" onclick="markComplete('git',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📌 Core Commands</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>git init, git clone URL, git remote -v</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git add ., git commit -m "msg", git push origin branch</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git pull, git fetch — difference (fetch doesn't merge)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git status, git log --oneline --graph</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git diff, git diff --staged</li>
+          </ul>
+          <div class="sub-title">🌿 Branching</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>git branch, git checkout -b newbranch</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git merge branchname — merge with commit</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git rebase main — reapply commits on top</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Rebase vs Merge: rebase = linear history, merge = preserves history</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git branch -d, git branch -D (force delete)</li>
+          </ul>
+          <div class="sub-title">🚀 Advanced Operations</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>git stash, git stash pop, git stash list</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git cherry-pick commitHash — apply specific commit</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git reset --soft HEAD~1 — undo commit, keep changes staged</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git reset --hard HEAD~1 — undo commit, discard changes</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git revert commitHash — safe undo (creates new commit)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git tag v1.0.0, git tag -a v1.0.0 -m "Release"</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git bisect — find which commit introduced a bug</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git blame filename — who changed each line</li>
+          </ul>
+          <div class="sub-title">🔄 Branching Strategies</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>GitFlow: main, develop, feature/*, hotfix/*, release/*</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Trunk-based: everyone commits to main, short-lived branches</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>GitHub Flow: main + feature branches + PR</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Git Hooks: pre-commit (lint), pre-push (tests), commit-msg</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>PR workflow: fork → branch → PR → review → merge</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>.gitignore — ignore node_modules, .env, *.log</li>
+          </ul>
+          <div class="sub-title">😱 Resolving Conflicts</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>git merge → conflict → edit file → git add → git commit</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use VS Code / IntelliJ merge conflict UI</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>git mergetool — graphical conflict resolution</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "Rebase vs Merge?" — Rebase rewrites history for clean linear log (use locally). Merge preserves full history (use for PRs).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-docker">
+      <div class="card-hdr" onclick="toggleCard('docker')">
+        <div class="card-ico">🐳</div>
+        <div class="card-info">
+          <div class="card-name">3. Docker</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-docker">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-docker">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-docker">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('docker',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('docker',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('docker',event)">↺</button>
+        <button class="complete-btn" id="cbtn-docker" onclick="markComplete('docker',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📄 Dockerfile Mastery</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>FROM, RUN, COPY, ADD, WORKDIR, EXPOSE, ENV, ARG</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CMD ["executable","param"] vs ENTRYPOINT — know the difference</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Multi-stage build: FROM node AS builder → FROM nginx COPY --from=builder</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Layer caching: put rarely-changing lines first (COPY package.json before COPY .)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use non-root user: RUN adduser --disabled-password appuser; USER appuser</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use .dockerignore — exclude node_modules, .git, .env</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Minimal base images: alpine, distroless, scratch</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>HEALTHCHECK instruction — container health</li>
+          </ul>
+          <div class="sub-title">🚀 Runtime Commands</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>docker build -t myapp:1.0 . — build image</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker run -d -p 8080:80 --name myapp myapp:1.0</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker exec -it container bash — enter container</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker logs -f container — follow logs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker inspect container — full JSON metadata</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker stats — live resource usage</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker cp file container:/path — copy file in/out</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker commit container newimage — create image from container</li>
+          </ul>
+          <div class="sub-title">🌐 Networking</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Bridge (default) — containers on same host communicate</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Host — container uses host network stack directly</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>None — fully isolated, no network</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Overlay — multi-host networking (Docker Swarm / K8s)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker network create mynet; docker run --network mynet</li>
+          </ul>
+          <div class="sub-title">💾 Volumes</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Named volumes: docker volume create myvol; -v myvol:/data</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Bind mount: -v /host/path:/container/path</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>tmpfs: --tmpfs /tmp — in-memory, not persisted</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker volume ls, inspect, prune</li>
+          </ul>
+          <div class="sub-title">🧩 Docker Compose</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>docker-compose.yml — services, networks, volumes</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>docker compose up -d, down, logs, ps, exec</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>depends_on, healthcheck in compose</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Environment variables: env_file, environment block</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Scale: docker compose up --scale web=3</li>
+          </ul>
+          <div class="sub-title">🔐 Registry</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>docker push/pull to Docker Hub</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>AWS ECR: aws ecr get-login-password | docker login</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Tagging strategy: myapp:1.0.0, myapp:latest, myapp:git-sha</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "CMD vs ENTRYPOINT?" — ENTRYPOINT is the process that always runs. CMD provides default arguments to ENTRYPOINT. You can override CMD at runtime but not ENTRYPOINT easily.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-k8s">
+      <div class="card-hdr" onclick="toggleCard('k8s')">
+        <div class="card-ico">☸️</div>
+        <div class="card-info">
+          <div class="card-name">4. Kubernetes (CKA + CKS)</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST — CERTIFIED</span><span class="card-time-badge" id="time-k8s">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-k8s">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-k8s">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('k8s',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('k8s',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('k8s',event)">↺</button>
+        <button class="complete-btn" id="cbtn-k8s" onclick="markComplete('k8s',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">🏗️ Architecture</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Control Plane: API Server, etcd, Scheduler, Controller Manager</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Worker Node: kubelet, kube-proxy, container runtime</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>etcd: distributed key-value store — stores all cluster state</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>API Server: entry point for all kubectl commands</li>
+          </ul>
+          <div class="sub-title">📦 Core Workloads</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Pod: smallest unit — one or more containers sharing network/storage</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ReplicaSet: ensures N replicas running always</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Deployment: ReplicaSet + rolling updates + rollback</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>StatefulSet: ordered pods with stable identity (DBs)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>DaemonSet: one pod per node (logging, monitoring agents)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Job: run-to-completion tasks; CronJob: scheduled jobs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl rollout status/history/undo deployment/myapp</li>
+          </ul>
+          <div class="sub-title">🌐 Networking & Services</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>ClusterIP: internal only — default service type</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NodePort: exposes service on node IP + static port (30000-32767)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>LoadBalancer: creates cloud LB (AWS ELB, GCP LB)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ExternalName: DNS alias to external service</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Ingress: L7 HTTP routing — path-based, host-based</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Ingress Controller: nginx, traefik, AWS ALB controller</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NetworkPolicy: whitelist pod-to-pod traffic (ingress/egress rules)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>DNS: service.namespace.svc.cluster.local</li>
+          </ul>
+          <div class="sub-title">⚙️ Config & Secrets</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>ConfigMap: non-sensitive config — env vars or volume mount</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Secret: base64 encoded — Opaque, TLS, docker-registry</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Inject as env: envFrom: - configMapRef / secretRef</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Mount as volume: /etc/config/key = value</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>External secrets: AWS Secrets Manager via ESO</li>
+          </ul>
+          <div class="sub-title">💾 Storage</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>PersistentVolume (PV): actual storage (NFS, EBS, EFS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>PersistentVolumeClaim (PVC): pod requests storage</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>StorageClass: dynamic provisioning (gp2, gp3 on AWS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>AccessModes: ReadWriteOnce, ReadOnlyMany, ReadWriteMany</li>
+          </ul>
+          <div class="sub-title">📐 Scheduling</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Resource requests & limits: CPU (500m), Memory (256Mi)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>LimitRange: default limits per namespace</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ResourceQuota: max resources per namespace</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Taints: kubectl taint nodes node1 key=value:NoSchedule</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Tolerations: pod can be scheduled on tainted node</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Node Affinity: prefer/require specific nodes</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Pod Anti-Affinity: spread pods across nodes/zones</li>
+          </ul>
+          <div class="sub-title">📈 Autoscaling</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>HPA: scale pods based on CPU/memory/custom metrics</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>VPA: resize pod resources automatically</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>KEDA: event-driven autoscaling (queue-based)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Cluster Autoscaler: add/remove nodes automatically</li>
+          </ul>
+          <div class="sub-title">🔐 RBAC & Security (CKS)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Role: permissions in a namespace; ClusterRole: cluster-wide</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>RoleBinding, ClusterRoleBinding — bind role to user/SA</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ServiceAccount: identity for pods to call K8s API</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>PodSecurityContext: runAsNonRoot, readOnlyRootFilesystem</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NetworkPolicy: deny all + allow specific (zero trust)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Admission Controllers: OPA/Gatekeeper policy enforcement</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Falco: runtime threat detection in K8s</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Image scanning before deploy (Trivy in pipeline)</li>
+          </ul>
+          <div class="sub-title">🪖 Helm</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>helm install, upgrade, rollback, uninstall, list</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>helm create mychart — scaffold chart structure</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>values.yaml — default values; override with -f or --set</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Templates: deployment.yaml, service.yaml with {{ .Values.* }}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>helm repo add, helm search repo</li>
+          </ul>
+          <div class="sub-title">🐛 Troubleshooting (Most Asked)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>CrashLoopBackOff: kubectl logs pod → check exit code → fix app</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>OOMKilled: increase memory limit or fix memory leak</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Pending Pod: kubectl describe pod → check events (resources? taints?)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ImagePullBackOff: wrong image name or missing registry secret</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl describe, logs, exec, top pod, get events</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> Always answer troubleshooting Qs with: describe → logs → events → exec into pod → check networking. Show a systematic approach.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-terraform">
+      <div class="card-hdr" onclick="toggleCard('terraform')">
+        <div class="card-ico">🏗️</div>
+        <div class="card-info">
+          <div class="card-name">5. Terraform</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-terraform">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-terraform">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-terraform">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('terraform',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('terraform',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('terraform',event)">↺</button>
+        <button class="complete-btn" id="cbtn-terraform" onclick="markComplete('terraform',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">⚡ Core Concepts</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Provider: plugin to talk to AWS/GCP/Azure (aws, azurerm, google)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Resource: infrastructure object (aws_instance, aws_s3_bucket)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Data Source: read existing infra (data "aws_ami" "latest")</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Variable: input parameters — var.region, var.instance_type</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Local: computed local values — locals { name = "myapp" }</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Output: expose values after apply — output "ip" { value = aws_instance.main.public_ip }</li>
+          </ul>
+          <div class="sub-title">🔧 Commands</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform init — download providers</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform plan — show what will change (dry run)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform apply -auto-approve</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform destroy — tear everything down</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform fmt — format code</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform validate — syntax check</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform state list, show, mv, rm — state management</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform import resource_type.name id — import existing</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform taint resource — force re-create on next apply</li>
+          </ul>
+          <div class="sub-title">💾 State Management</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>State file: terraform.tfstate — tracks real infra vs config</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Remote state: S3 bucket + DynamoDB (state locking)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>backend "s3" { bucket, key, region, dynamodb_table }</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>State locking: prevents simultaneous apply (race condition)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>terraform workspace new dev/staging/prod</li>
+          </ul>
+          <div class="sub-title">📦 Modules</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Module: reusable group of resources in a directory</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>module "vpc" { source = "./modules/vpc"; cidr = "10.0.0.0/16" }</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Write modules for: VPC, EKS, RDS, Security Groups</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use Terraform Registry modules (terraform-aws-modules)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Module versioning: source = "terraform-aws-modules/vpc/aws" version = "5.0"</li>
+          </ul>
+          <div class="sub-title">🔐 Secrets in Terraform</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Never hardcode secrets in .tf files</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use environment variables: TF_VAR_db_password</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use AWS Secrets Manager data source</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use HashiCorp Vault provider</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>sensitive = true — hide value in plan output</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "What is Terraform state?" — It maps your config to real-world resources. Without state, Terraform can't know what already exists. Always use remote state + locking in team environments.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-ansible">
+      <div class="card-hdr" onclick="toggleCard('ansible')">
+        <div class="card-ico">⚙️</div>
+        <div class="card-info">
+          <div class="card-name">6. Ansible</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-ansible">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-ansible">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-ansible">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('ansible',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('ansible',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('ansible',event)">↺</button>
+        <button class="complete-btn" id="cbtn-ansible" onclick="markComplete('ansible',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📋 Inventory</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Static inventory: /etc/ansible/hosts — [webservers] 192.168.1.10</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Dynamic inventory: AWS EC2 plugin, GCP plugin</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Groups, children groups, host variables</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ansible -i inventory all -m ping — test connectivity</li>
+          </ul>
+          <div class="sub-title">📜 Playbooks</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>YAML structure: hosts, become, tasks, handlers, vars</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Modules: apt, yum, copy, template, service, file, user, command, shell</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>notify + handlers: trigger service restart only when changed</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>when: condition — conditional task execution</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>loop: - item1 — iterate over list</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>register: result — capture task output</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>debug: msg="{{ result.stdout }}" — print output</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>tags: install/configure — run specific parts</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ignore_errors: yes — continue on failure</li>
+          </ul>
+          <div class="sub-title">🗂️ Roles</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Role structure: tasks/, handlers/, templates/, vars/, defaults/, files/</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ansible-galaxy init myrole — scaffold role</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Install from Galaxy: ansible-galaxy install geerlingguy.nginx</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>requirements.yml for role dependencies</li>
+          </ul>
+          <div class="sub-title">🔐 Variables & Vault</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Variable precedence: extra vars > host vars > group vars > role defaults</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>group_vars/all.yml, host_vars/hostname.yml</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Jinja2 templates: {{ variable }}, {% if %}, {% for %}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ansible-vault encrypt secrets.yml — encrypt sensitive data</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ansible-playbook --ask-vault-pass or --vault-password-file</li>
+          </ul>
+          <div class="sub-title">🚀 Real Use Cases</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Automate server setup: install nginx, create users, set firewall</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Deploy Docker containers with Ansible</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Configure K8s nodes, install packages</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Patch management: update all servers in inventory</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "Ansible vs Terraform?" — Ansible = configuration management (what's inside the server). Terraform = infrastructure provisioning (the server itself). Use both together.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-jenkins">
+      <div class="card-hdr" onclick="toggleCard('jenkins')">
+        <div class="card-ico">🔁</div>
+        <div class="card-info">
+          <div class="card-name">7. Jenkins</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-jenkins">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-jenkins">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-jenkins">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('jenkins',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('jenkins',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('jenkins',event)">↺</button>
+        <button class="complete-btn" id="cbtn-jenkins" onclick="markComplete('jenkins',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📄 Declarative Pipeline</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Jenkinsfile: pipeline { agent any; stages { stage('Build') { steps { sh '...' }}}}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>agent: any, none, label, docker</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>environment block — set env vars pipeline-wide</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>parameters: string, boolean, choice — build with params</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>post { always, success, failure, unstable } blocks</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>when { branch 'main' } — conditional stages</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>parallel { stage1 { ... } stage2 { ... } } — parallel stages</li>
+          </ul>
+          <div class="sub-title">🔧 Pipeline Types</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Freestyle: GUI-based, simple (avoid in interviews)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Pipeline: code-based Jenkinsfile (preferred)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Multibranch Pipeline: auto-detect branches with Jenkinsfile</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Shared Library: reusable Groovy functions across pipelines</li>
+          </ul>
+          <div class="sub-title">🔗 Full Pipeline: Build → Scan → Deploy</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Stage 1 — Checkout: git checkout from GitHub</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Stage 2 — Build: docker build -t myapp:${BUILD_NUMBER}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Stage 3 — SonarQube: sonar-scanner, check quality gate</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Stage 4 — Trivy: trivy image --exit-code 1 --severity CRITICAL</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Stage 5 — Push: docker push to ECR</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Stage 6 — Deploy: kubectl apply or helm upgrade</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Stage 7 — Notify: Slack notification on success/failure</li>
+          </ul>
+          <div class="sub-title">🔐 Credentials & Security</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>withCredentials([usernamePassword(...)]) — inject secrets safely</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Jenkins Credentials Store — global/folder scope</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Mask passwords in console output</li>
+          </ul>
+          <div class="sub-title">🖥️ Agents & Scaling</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Master/controller: schedules builds, doesn't run them</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Agent/node: runs the actual build steps</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Docker agent: agent { docker { image 'maven:3.8' } }</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Kubernetes agent: dynamic pods as build agents</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> Always explain your pipeline stages clearly: "My pipeline has 7 stages — checkout, build, unit test, SonarQube scan, Trivy scan, push to ECR, and deploy to EKS via Helm."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-gha">
+      <div class="card-hdr" onclick="toggleCard('gha')">
+        <div class="card-ico">🐙</div>
+        <div class="card-info">
+          <div class="card-name">8. GitHub Actions</div>
+          <div class="card-tags"><span class="lvl lvl-add">ADD NOW — HIGH DEMAND</span><span class="card-time-badge" id="time-gha">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-gha">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-gha">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('gha',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('gha',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('gha',event)">↺</button>
+        <button class="complete-btn" id="cbtn-gha" onclick="markComplete('gha',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📁 Workflow Basics</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Location: .github/workflows/ci.yml in your repo</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Triggers: on: push, pull_request, schedule, workflow_dispatch</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>on: push: branches: [main, develop]</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>on: schedule: cron: '0 6 * * 1' — every Monday 6am</li>
+          </ul>
+          <div class="sub-title">⚙️ Jobs & Steps</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>jobs: build: runs-on: ubuntu-latest</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>steps: - uses: actions/checkout@v4</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>steps: - uses: actions/setup-python@v5 with: python-version: '3.11'</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>run: multi-line shell commands</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>needs: [build] — job dependencies</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>if: github.ref == 'refs/heads/main' — conditional jobs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>continue-on-error: true — don't fail workflow on step failure</li>
+          </ul>
+          <div class="sub-title">🔐 Secrets & Env</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>GitHub Secrets: Settings → Secrets → New — ${{ secrets.AWS_KEY }}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>env: MY_VAR: ${{ secrets.TOKEN }} — pass to steps</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>GITHUB_TOKEN — built-in, auto-available</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Environment protection rules — require approvals for prod</li>
+          </ul>
+          <div class="sub-title">🚀 Complete CI/CD Workflow</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Checkout → Setup Python → Run tests → SonarQube scan</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Docker build → Trivy scan → Push to ECR</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Update Helm values.yaml with new image tag</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ArgoCD auto-detects change and deploys to EKS</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Matrix build: strategy: matrix: python-version: [3.9, 3.10, 3.11]</li>
+          </ul>
+          <div class="sub-title">♻️ Reusable Workflows</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>on: workflow_call — define reusable workflow</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>uses: ./.github/workflows/reusable.yml — call it</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Composite Actions: bundle multiple steps into one action</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> GitHub Actions is replacing Jenkins at many product companies. Know both but be ready to write GHA YAML from scratch in interviews.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-sonar">
+      <div class="card-hdr" onclick="toggleCard('sonar')">
+        <div class="card-ico">🔍</div>
+        <div class="card-info">
+          <div class="card-name">9. SonarQube</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-sonar">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-sonar">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-sonar">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('sonar',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('sonar',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('sonar',event)">↺</button>
+        <button class="complete-btn" id="cbtn-sonar" onclick="markComplete('sonar',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📊 Core Concepts</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>SAST — Static Application Security Testing (analyze without running)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Bugs: code logic errors that will cause failures</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Vulnerabilities: security issues (SQL injection, XSS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Code Smells: maintainability issues, technical debt</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Security Hotspots: code needing manual security review</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Coverage: % of code covered by unit tests</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Duplications: copy-pasted code blocks</li>
+          </ul>
+          <div class="sub-title">🚦 Quality Gates</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Quality Gate: pass/fail threshold (e.g. coverage > 80%, 0 critical bugs)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Built-in "Sonar way" gate or custom gates</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Pipeline fails if Quality Gate fails (waitForQualityGate in Jenkins)</li>
+          </ul>
+          <div class="sub-title">🔗 CI/CD Integration</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Jenkins: withSonarQubeEnv + sonar-scanner + waitForQualityGate</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>GitHub Actions: SonarCloud action or self-hosted scanner</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>sonar-project.properties: projectKey, sources, tests, coverage report path</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Branch analysis: PR decoration — shows issues inline on GitHub PR</li>
+          </ul>
+          <div class="sub-title">⚙️ Configuration</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Quality Profiles: language-specific rule sets (Java, Python, JS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Custom rules: enable/disable specific rules</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Issue exclusions: sonar.exclusions=**/test/**, **/generated/**</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "How does SonarQube fit in your pipeline?" — Code push → Jenkins/GHA → sonar-scanner runs → SonarQube analyzes → Quality Gate checked → if FAIL → pipeline stops → no deploy.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-trivy">
+      <div class="card-hdr" onclick="toggleCard('trivy')">
+        <div class="card-ico">🛡️</div>
+        <div class="card-info">
+          <div class="card-name">10. Trivy</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-trivy">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-trivy">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-trivy">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('trivy',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('trivy',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('trivy',event)">↺</button>
+        <button class="complete-btn" id="cbtn-trivy" onclick="markComplete('trivy',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">🔍 Scan Types</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>trivy image myapp:1.0 — Docker image vulnerability scan</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trivy fs /path — filesystem scan (OS packages, dependencies)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trivy repo https://github.com/... — Git repo scan</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trivy k8s --report summary cluster — K8s cluster scan</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trivy config . — IaC misconfig scan (Terraform, K8s YAML)</li>
+          </ul>
+          <div class="sub-title">⚠️ Severity & Filtering</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Severity levels: CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trivy image --severity CRITICAL,HIGH myapp:1.0</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>--exit-code 1 — fail the CI step if vulnerabilities found</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>--ignore-unfixed — skip unfixed vulnerabilities</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>.trivyignore — ignore specific CVEs</li>
+          </ul>
+          <div class="sub-title">📄 Output Formats</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Table (default), JSON (--format json), SARIF (GitHub Security tab)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trivy image -f json -o report.json myapp:1.0</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>SBOM: --format cyclonedx — software bill of materials</li>
+          </ul>
+          <div class="sub-title">🔗 CI Integration</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Run after docker build, before docker push</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Block pipeline if CRITICAL found: --exit-code 1 --severity CRITICAL</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>GitHub Actions: aquasecurity/trivy-action — native action available</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Upload SARIF to GitHub Security: upload-sarif action</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "Where does Trivy fit?" — After docker build, before push to registry. If CRITICAL vuln found → pipeline fails → fix base image or dependency → rebuild.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-prom">
+      <div class="card-hdr" onclick="toggleCard('prom')">
+        <div class="card-ico">📊</div>
+        <div class="card-info">
+          <div class="card-name">11. Prometheus + Grafana</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-prom">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-prom">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-prom">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('prom',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('prom',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('prom',event)">↺</button>
+        <button class="complete-btn" id="cbtn-prom" onclick="markComplete('prom',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📐 Prometheus Architecture</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Pull model: Prometheus scrapes targets on /metrics endpoint</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>TSDB: time-series database — stores metrics with timestamps</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Exporters: Node Exporter (OS), cAdvisor (containers), kube-state-metrics (K8s)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Pushgateway: for short-lived jobs that can't be scraped</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>scrape_interval: 15s — how often to collect metrics</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>prometheus.yml: scrape_configs with job_name and targets</li>
+          </ul>
+          <div class="sub-title">📈 PromQL (Must Know)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Metric types: Counter, Gauge, Histogram, Summary</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>rate(http_requests_total[5m]) — per-second rate of counter</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>sum(rate(http_requests_total[5m])) by (status)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>100 - avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>histogram_quantile(0.95, rate(http_duration_seconds_bucket[5m]))</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Label filtering: metric{job="api", env="prod"}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>predict_linear(node_disk_free_bytes[1h], 4*3600)</li>
+          </ul>
+          <div class="sub-title">🚨 Alertmanager</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Alert rules in Prometheus: alert, expr, for, labels, annotations</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Alert: CPUHigh — expr: avg(cpu_usage) > 80 — for: 5m</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Alertmanager: route → receiver (Slack, PagerDuty, email)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Grouping, inhibition, silencing alerts</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Slack webhook integration for alert notifications</li>
+          </ul>
+          <div class="sub-title">📊 Grafana</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Add Prometheus as data source (http://prometheus:9090)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Import dashboard: Node Exporter Full (ID: 1860)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Build custom dashboard: panels, rows, variables</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Dashboard variables: $namespace, $pod — dynamic filtering</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Annotations: mark deployments on time series graphs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Alert rules in Grafana panels + notification channels</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Provisioning: grafana dashboards and datasources as code (YAML)</li>
+          </ul>
+          <div class="sub-title">☸️ K8s Monitoring Stack</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>kube-prometheus-stack Helm chart — all-in-one</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ServiceMonitor CRD: tell Prometheus which services to scrape</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Monitor: pod restarts, OOMKilled, node pressure, PVC usage</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> Know 3-5 PromQL queries by heart. "CPU usage query?" — 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-aws">
+      <div class="card-hdr" onclick="toggleCard('aws')">
+        <div class="card-ico">☁️</div>
+        <div class="card-info">
+          <div class="card-name">12. AWS</div>
+          <div class="card-tags"><span class="lvl lvl-add">ADD NOW — #1 PRIORITY</span><span class="card-time-badge" id="time-aws">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-aws">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-aws">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('aws',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('aws',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('aws',event)">↺</button>
+        <button class="complete-btn" id="cbtn-aws" onclick="markComplete('aws',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">🖥️ Compute (EC2)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Instance types: t3 (general), c5 (compute), r5 (memory), m5 (balanced)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Pricing: On-Demand, Reserved, Spot (cheapest, can be interrupted)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>AMI: Amazon Machine Image — pre-configured OS snapshot</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Auto Scaling Group: min/max/desired capacity</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Launch Template: modern replacement for Launch Configuration</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>User Data: bootstrap script run at first launch</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>EC2 key pairs: SSH access</li>
+          </ul>
+          <div class="sub-title">🌐 Networking (VPC)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>VPC: isolated virtual network — your CIDR block (10.0.0.0/16)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Public Subnet: has Internet Gateway route — internet accessible</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Private Subnet: no IGW route — use NAT Gateway for outbound</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Internet Gateway (IGW): VPC → internet</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NAT Gateway: private subnet → internet (one-way)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Security Group: stateful firewall at instance level</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>NACL: stateless firewall at subnet level</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Route Table: controls where traffic goes</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>VPC Peering: connect two VPCs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ALB: Layer 7 — path/host based routing; NLB: Layer 4</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Route53: DNS — A record, CNAME, alias records</li>
+          </ul>
+          <div class="sub-title">🗄️ Storage</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>S3: object storage — buckets, objects, prefix (not folders)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>S3 storage classes: Standard, IA, Glacier, Intelligent-Tiering</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>S3 versioning, lifecycle policies, replication</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>S3 bucket policy vs ACL — prefer bucket policies</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Block Public Access — always enable for security</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>EBS: block storage attached to EC2 (like hard drive)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>EFS: shared file system — multiple EC2s can mount</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>EBS gp3 vs gp2 — gp3 is cheaper and faster</li>
+          </ul>
+          <div class="sub-title">🔐 IAM</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Users: long-term credentials (avoid for apps — use roles)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Groups: collection of users with same permissions</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Roles: temporary credentials — assign to EC2, Lambda, EKS pods</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Policies: JSON document defining Allow/Deny + Actions + Resources</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Managed policies vs inline policies</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>IRSA: IAM Roles for Service Accounts (EKS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Least privilege principle — only needed permissions</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>MFA for root and admin accounts</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>AWS STS: assume-role, temporary credentials</li>
+          </ul>
+          <div class="sub-title">☸️ EKS (Elastic Kubernetes Service)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Managed control plane: AWS manages API server, etcd</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Node groups: managed (AWS manages), self-managed, Fargate</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>eksctl create cluster — CLI tool for EKS</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>aws eks update-kubeconfig — connect kubectl to EKS</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ECR: private Docker registry — aws ecr get-login-password</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>EKS + Terraform: terraform-aws-modules/eks/aws</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>EKS add-ons: CoreDNS, kube-proxy, VPC CNI, EBS CSI driver</li>
+          </ul>
+          <div class="sub-title">📊 Monitoring & Logging</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>CloudWatch: metrics, logs, alarms, dashboards</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CloudWatch Agent: push custom metrics from EC2</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CloudWatch Logs Insights: query logs with SQL-like syntax</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CloudTrail: audit log of all AWS API calls</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>AWS Config: track config changes over time</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "SG vs NACL?" — SG: stateful (return traffic auto-allowed), instance level. NACL: stateless (must allow both directions), subnet level. SG is the main one you'll use.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-argo">
+      <div class="card-hdr" onclick="toggleCard('argo')">
+        <div class="card-ico">🔄</div>
+        <div class="card-info">
+          <div class="card-name">13. ArgoCD (GitOps)</div>
+          <div class="card-tags"><span class="lvl lvl-add">ADD NOW — TRENDING</span><span class="card-time-badge" id="time-argo">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-argo">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-argo">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('argo',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('argo',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('argo',event)">↺</button>
+        <button class="complete-btn" id="cbtn-argo" onclick="markComplete('argo',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">💡 GitOps Concept</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>GitOps: Git is the single source of truth for infra and apps</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Desired state in Git repo → ArgoCD ensures cluster matches it</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>No kubectl apply manually — Git commit drives deployments</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Audit trail: every change has a Git commit</li>
+          </ul>
+          <div class="sub-title">⚙️ Setup & Configuration</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl create namespace argocd</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>kubectl apply -n argocd -f argocd-install.yaml</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Access UI: kubectl port-forward svc/argocd-server 8080:443</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>argocd login, argocd app create, argocd app sync</li>
+          </ul>
+          <div class="sub-title">📋 Application CRD</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Application: defines what to deploy where</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>source: repoURL, path, targetRevision (branch/tag)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>destination: server (cluster), namespace</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>syncPolicy: automated: { prune: true, selfHeal: true }</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>prune: delete resources removed from Git</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>selfHeal: revert manual kubectl changes automatically</li>
+          </ul>
+          <div class="sub-title">🏗️ Patterns</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>App of Apps: one parent App manages multiple child Apps</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ApplicationSet: generate Apps from template (multi-cluster, multi-env)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Separate repos: app code repo + GitOps config repo (best practice)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Image Updater: auto-update image tag in Git when new image pushed</li>
+          </ul>
+          <div class="sub-title">🔗 Full GitOps Workflow</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Dev pushes code → GitHub Actions builds → Docker image pushed to ECR</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>GHA updates image tag in Helm values.yaml in GitOps repo</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>ArgoCD detects change → auto-syncs → deploys to EKS</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Rollback: git revert → ArgoCD reverts cluster</li>
+          </ul>
+          <div class="sub-title">🔐 RBAC & SSO</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>ArgoCD RBAC: roles (admin, read-only, deploy-only)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Project: group apps with access restrictions</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>SSO: integrate with GitHub/Google/LDAP (Dex)</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "What is GitOps?" — It's a practice where your desired infrastructure/app state lives in Git. ArgoCD continuously reconciles the cluster to match what's in Git. No manual kubectl commands.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-python">
+      <div class="card-hdr" onclick="toggleCard('python')">
+        <div class="card-ico">🐍</div>
+        <div class="card-info">
+          <div class="card-name">14. Python (Automation + DSA)</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-python">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-python">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-python">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('python',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('python',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('python',event)">↺</button>
+        <button class="complete-btn" id="cbtn-python" onclick="markComplete('python',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">🔧 DevOps Automation</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>boto3: AWS SDK — ec2.describe_instances(), s3.upload_file()</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Start/stop EC2 by tag using boto3</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>List S3 objects, upload, download with boto3</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>requests library: GET/POST APIs, JSON responses</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>PyYAML: load/dump YAML files (K8s manifests)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>json module: parse API responses</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>os, shutil, pathlib — file/directory operations</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>subprocess.run() — execute shell commands from Python</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>argparse: build CLI tools with flags and arguments</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>logging module: proper logging instead of print()</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Schedule scripts: schedule library or cron</li>
+          </ul>
+          <div class="sub-title">🧠 DSA — Arrays & Strings (25 problems)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Two Sum, Three Sum</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Best Time to Buy/Sell Stock</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Valid Anagram, Group Anagrams</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Sliding Window Maximum, Longest Substring Without Repeat</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Binary Search, Search in Rotated Array</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Product of Array Except Self</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Maximum Subarray (Kadane's Algorithm)</li>
+          </ul>
+          <div class="sub-title">🧠 DSA — Linked List, Stack, Queue (15 problems)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Reverse Linked List, Merge Two Sorted Lists</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Detect Cycle in Linked List (Floyd's algorithm)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Valid Parentheses (Stack)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Min Stack, Daily Temperatures</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>LRU Cache (HashMap + Doubly Linked List)</li>
+          </ul>
+          <div class="sub-title">🧠 DSA — Trees & Graphs (20 problems)</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Inorder, Preorder, Postorder traversal</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Level Order Traversal (BFS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Maximum Depth of Binary Tree</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Validate BST</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Number of Islands (DFS/BFS)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Clone Graph</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Course Schedule (Topological Sort)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Shortest Path (Dijkstra basics)</li>
+          </ul>
+          <div class="note"><strong>Goal: 75+ LeetCode Easy/Medium problems.</strong> Practice on LeetCode. Focus on getting a working solution first, then optimize. Speed: 30-45 min per medium problem.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-bash">
+      <div class="card-hdr" onclick="toggleCard('bash')">
+        <div class="card-ico">💻</div>
+        <div class="card-info">
+          <div class="card-name">15. Bash Scripting</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST</span><span class="card-time-badge" id="time-bash">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-bash">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-bash">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('bash',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('bash',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('bash',event)">↺</button>
+        <button class="complete-btn" id="cbtn-bash" onclick="markComplete('bash',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📝 Basics</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Shebang: #!/bin/bash — must be first line</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Variables: NAME="value" — no spaces around =</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Special variables: $0 (script name), $1-$9 (args), $# (arg count), $? (exit code), $$ (PID)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Arrays: arr=("a" "b" "c"); echo ${arr[0]}; echo ${arr[@]}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Command substitution: result=$(command) or `command`</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Arithmetic: $((a + b)), let a=5+3</li>
+          </ul>
+          <div class="sub-title">🔀 Control Flow</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>if [ condition ]; then ... elif ... else ... fi</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>String: [ "$a" == "$b" ], [ -z "$a" ] (empty), [ -n "$a" ] (non-empty)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Numbers: [ $a -eq $b ], -ne, -lt, -gt, -le, -ge</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>File: [ -f file ] (exists+file), [ -d dir ] (directory), [ -r file ] (readable)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>case $var in pattern1) ;; pattern2) ;; *) ;; esac</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>for i in {1..10}; do echo $i; done</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>for file in /var/log/*.log; do ...; done</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>while [ condition ]; do ...; done</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>until [ condition ]; do ...; done</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>break, continue — loop control</li>
+          </ul>
+          <div class="sub-title">🔧 Functions</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>function name() { ... } or name() { ... }</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Arguments inside function: $1, $2, $@</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>return value via exit code: return 0 (success), return 1 (failure)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Return string: echo result from function; capture with $(func)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Local variables: local var="value" — prevent global pollution</li>
+          </ul>
+          <div class="sub-title">🚨 Error Handling</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>set -e — exit on first error</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>set -u — exit on undefined variable</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>set -o pipefail — fail if any pipe command fails</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trap 'echo "Error on line $LINENO"' ERR</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>trap cleanup EXIT — run cleanup on exit</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>command || { echo "failed"; exit 1; }</li>
+          </ul>
+          <div class="sub-title">📋 Real Scripts to Build</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Backup script: tar + timestamp + rsync to S3</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Log rotation: find /var/log -name "*.log" -mtime +7 -delete</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Health check: curl -f http://localhost/health || restart_service</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Deploy script: git pull + docker build + docker compose up</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Disk alert: df -h | awk '$5>80{print "Disk "$5" on "$6}'</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Bulk user creation from CSV file</li>
+          </ul>
+          <div class="sub-title">🔤 Advanced</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Heredoc: cat <<EOF ... EOF — multiline strings</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>String manipulation: ${var#prefix}, ${var%suffix}, ${var/old/new}</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>printf "%-20s %s\n" col1 col2 — formatted output</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Read from file: while IFS= read -r line; do ...; done < file</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Parallel execution: command & ; wait — background jobs</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>xargs -P 4 — parallel xargs</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> "Write a script to find top 5 memory-consuming processes" — ps aux --sort=-%mem | head -6 — know this!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-sd">
+      <div class="card-hdr" onclick="toggleCard('sd')">
+        <div class="card-ico">🏛️</div>
+        <div class="card-info">
+          <div class="card-name">16. System Design Basics</div>
+          <div class="card-tags"><span class="lvl lvl-must">MUST FOR ₹12L</span><span class="card-time-badge" id="time-sd">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-sd">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-sd">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('sd',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('sd',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('sd',event)">↺</button>
+        <button class="complete-btn" id="cbtn-sd" onclick="markComplete('sd',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">🏗️ Core Concepts</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Scalability: horizontal (more servers) vs vertical (bigger server)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Load Balancer: distribute traffic — round robin, least connections</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>CDN: serve static assets from edge locations near users</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Caching: Redis, Memcached — reduce DB load</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Database: SQL vs NoSQL — when to use each</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Sharding, Replication, Read Replicas</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Message Queue: Kafka, SQS — async processing</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Microservices vs Monolith trade-offs</li>
+          </ul>
+          <div class="sub-title">🚀 DevOps-Specific Design</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Design a CI/CD pipeline for 50 microservices</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Design a K8s cluster for production (HA, autoscaling, monitoring)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Blue-Green deployment: two identical environments, switch traffic</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Canary deployment: route 5% traffic to new version → monitor → increase</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Rolling deployment: gradually replace old pods with new</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Disaster Recovery: RTO (recovery time), RPO (data loss tolerance)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Multi-region deployment strategy</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>How to achieve 99.9% uptime (3 nines)</li>
+          </ul>
+          <div class="note"><strong>Interview Tip:</strong> When asked to design — always say: "Let me first clarify requirements. What's the scale? What's the SLA? Do we need multi-region?" Shows seniority.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcard" id="card-resume">
+      <div class="card-hdr" onclick="toggleCard('resume')">
+        <div class="card-ico">📄</div>
+        <div class="card-info">
+          <div class="card-name">17. Resume + Job Hunt</div>
+          <div class="card-tags"><span class="lvl lvl-must">CRITICAL</span><span class="card-time-badge" id="time-resume">00:00:00</span></div>
+        </div>
+        <div class="card-right"><div class="expand-arrow">▼</div><div class="card-chk-mini" id="mini-resume">0/0</div></div>
+      </div>
+      <div class="card-timer-row">
+        <span class="mini-clock" id="clock-resume">00:00:00</span>
+        <button class="mini-btn mini-start" onclick="topicStart('resume',event)">▶ Start</button>
+        <button class="mini-btn mini-stop" onclick="topicStop('resume',event)">⏸ Stop</button>
+        <button class="mini-btn mini-reset" onclick="topicReset('resume',event)">↺</button>
+        <button class="complete-btn" id="cbtn-resume" onclick="markComplete('resume',event)">✓ Mark Complete</button>
+      </div>
+      <div class="card-body">
+        <div class="cb-inner">
+          <div class="sub-title">📋 Resume</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>1 page only — clean, ATS-friendly format</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use Jake's Resume template (LaTeX) or Overleaf</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Internship: describe what you built, tools used, impact</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use numbers: "Reduced deploy time by 40% using Jenkins pipeline"</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Skills section: Docker · Kubernetes · AWS · Terraform · Python · ArgoCD</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Certifications: CKA, CKS with dates and license numbers</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>GitHub URL and LinkedIn URL — both must be active</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>No photo, no DOB, no address (just city)</li>
+          </ul>
+          <div class="sub-title">🐙 GitHub Profile</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Pinned repos: 3 best projects visible immediately</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>README.md for each project: what, why, architecture diagram, how to run</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Green contribution graph — commit daily (even small things)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Profile README: who you are, your stack, certifications</li>
+          </ul>
+          <div class="sub-title">💼 LinkedIn</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Professional headshot</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Headline: "DevOps Engineer | CKA | AWS | Kubernetes | CI/CD"</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Open to Work — set visible to recruiters</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Add certifications with verification links</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Post 1-2 technical posts per week (builds visibility)</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Connect with DevOps engineers, recruiters at target companies</li>
+          </ul>
+          <div class="sub-title">🎯 Job Application Strategy</div>
+          <ul class="chk-list">
+            <li><div class="chkbox" onclick="chk(this)"></div>Apply to 30+ companies — it's a numbers game</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Target: Freshworks, Zoho cloud, PhonePe, CRED, Swiggy, Razorpay</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Use: LinkedIn, Naukri, AngelList, Wellfound, company career pages</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Referrals: LinkedIn → find alumni → message for referral</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Follow up after 1 week if no response</li>
+            <li><div class="chkbox" onclick="chk(this)"></div>Negotiate: if offer is ₹8L, ask for ₹10L with justification</li>
+          </ul>
+          <div class="note"><strong>Negotiation Tip:</strong> "I have CKA+CKS, hands-on with AWS+ArgoCD+CI/CD, and 3 strong GitHub projects. Based on market rates for this stack, I'm expecting ₹10-12L." Be confident.</div>
+        </div>
+      </div>
+    </div>
+
+  </div></div>
+
+
+
+</div><script>
+// ===================== STORAGE HELPERS =====================
+const LS = {
+  get: (k, def=null) => { try { const v=localStorage.getItem(k); return v!==null?JSON.parse(v):def; } catch{ return def; } },
+  set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch{} },
+  del: (k) => { try { localStorage.removeItem(k); } catch{} }
+};
+
+// ===================== TIMER ENGINE =====================
+const topicIds = ['cka','cks','linux','git','docker','k8s','terraform','ansible','jenkins','gha','sonar','trivy','prom','aws','argo','python','bash','sd','resume'];
+const topicSeconds = {};
+const topicIntervals = {};
+const topicStartDates = {};
+const topicEndDates = {};
+topicIds.forEach(id => { topicSeconds[id] = LS.get('tsec_'+id, 0); });
+
+let globalSeconds = LS.get('globalSeconds', 0);
+let globalInterval = null;
+let allTimeSeconds = LS.get('allTimeSeconds', 0);
+let gStartDate = LS.get('gStartDate') ? new Date(LS.get('gStartDate')) : null;
+let gEndDate = LS.get('gEndDate') ? new Date(LS.get('gEndDate')) : null;
+
+topicIds.forEach(id => {
+  const s = LS.get('tstart_'+id);
+  const e = LS.get('tend_'+id);
+  if(s) topicStartDates[id] = new Date(s);
+  if(e) topicEndDates[id] = new Date(e);
+});
+
+function fmtDate(d){
+  if(!d) return '—';
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let h=d.getHours(), m=d.getMinutes(), ampm=h>=12?'PM':'AM';
+  h=h%12||12;
+  return days[d.getDay()]+', '+d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear()+' · '+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+' '+ampm;
+}
+function fmt(s){ const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60; return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'); }
+function fmtShort(s){ const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60; if(h>0) return h+'h '+String(m).padStart(2,'0')+'m'; return String(m).padStart(2,'0')+'m '+String(sec).padStart(2,'0')+'s'; }
+
+function globalStart(){
+  if(globalInterval) return;
+  if(!gStartDate){ gStartDate=new Date(); LS.set('gStartDate', gStartDate.toISOString()); document.getElementById('gStartDate').textContent=fmtDate(gStartDate); }
+  document.getElementById('gEndDate').textContent='Running…';
+  globalInterval = setInterval(()=>{
+    globalSeconds++; allTimeSeconds++;
+    LS.set('globalSeconds', globalSeconds); LS.set('allTimeSeconds', allTimeSeconds);
+    document.getElementById('globalClock').textContent=fmt(globalSeconds);
+    document.getElementById('allTimeDisp').textContent=fmtShort(allTimeSeconds);
+    document.getElementById('totalTimeDisp').textContent=fmtShort(allTimeSeconds);
+  },1000);
+}
+function globalStop(){
+  clearInterval(globalInterval); globalInterval=null;
+  gEndDate=new Date(); LS.set('gEndDate', gEndDate.toISOString());
+  document.getElementById('gEndDate').textContent=fmtDate(gEndDate);
+}
+function globalReset(){
+  globalStop(); globalSeconds=0; allTimeSeconds=0;
+  gStartDate=null; gEndDate=null;
+  LS.del('globalSeconds'); LS.del('allTimeSeconds'); LS.del('gStartDate'); LS.del('gEndDate');
+  document.getElementById('globalClock').textContent='00:00:00';
+  document.getElementById('allTimeDisp').textContent='00h 00m';
+  document.getElementById('totalTimeDisp').textContent='00h 00m';
+  document.getElementById('gStartDate').textContent='—';
+  document.getElementById('gEndDate').textContent='—';
+}
+
+function injectDateRows(){
+  topicIds.forEach(id=>{
+    const timerRow=document.querySelector('#card-'+id+' .card-timer-row');
+    if(!timerRow) return;
+    const div=document.createElement('div');
+    div.className='topic-dates'; div.id='dates-'+id;
+    div.innerHTML='<span class="sdate-lbl">Started:</span> <span class="sdate-val" id="tstart-'+id+'">—</span>&nbsp;&nbsp;<span class="sdate-lbl">Ended:</span> <span class="sdate-val" id="tend-'+id+'">—</span>';
+    timerRow.after(div);
+  });
+}
+
+function topicStart(id,e){
+  e.stopPropagation(); if(topicIntervals[id]) return;
+  if(!topicStartDates[id]){ topicStartDates[id]=new Date(); LS.set('tstart_'+id, topicStartDates[id].toISOString()); }
+  const tendEl=document.getElementById('tend-'+id); if(tendEl) tendEl.textContent='Running…';
+  topicIntervals[id]=setInterval(()=>{
+    topicSeconds[id]++; LS.set('tsec_'+id, topicSeconds[id]);
+    document.getElementById('clock-'+id).textContent=fmt(topicSeconds[id]);
+    document.getElementById('time-'+id).textContent=fmt(topicSeconds[id]);
+  },1000);
+}
+function topicStop(id,e){
+  e.stopPropagation(); clearInterval(topicIntervals[id]); topicIntervals[id]=null;
+  topicEndDates[id]=new Date(); LS.set('tend_'+id, topicEndDates[id].toISOString());
+  const el=document.getElementById('tend-'+id); if(el) el.textContent=fmtDate(topicEndDates[id]);
+}
+function topicReset(id,e){
+  e.stopPropagation(); clearInterval(topicIntervals[id]); topicIntervals[id]=null;
+  topicSeconds[id]=0; delete topicStartDates[id]; delete topicEndDates[id];
+  LS.del('tsec_'+id); LS.del('tstart_'+id); LS.del('tend_'+id);
+  document.getElementById('clock-'+id).textContent='00:00:00';
+  document.getElementById('time-'+id).textContent='00:00:00';
+  const s=document.getElementById('tstart-'+id); if(s) s.textContent='—';
+  const en=document.getElementById('tend-'+id); if(en) en.textContent='—';
+}
+
+// Added local storage hook for expanding/collapsing
+function toggleCard(id){ 
+  const card = document.getElementById('card-'+id);
+  const isOpen = card.classList.toggle('open'); 
+  LS.set('open_'+id, isOpen);
+}
+function expandAll(){ 
+  topicIds.forEach(id=>{
+    document.getElementById('card-'+id).classList.add('open');
+    LS.set('open_'+id, true);
+  }); 
+}
+function collapseAll(){ 
+  topicIds.forEach(id=>{
+    document.getElementById('card-'+id).classList.remove('open');
+    LS.set('open_'+id, false);
+  }); 
+}
+
+function markComplete(id,e){
+  e.stopPropagation();
+  const card=document.getElementById('card-'+id); const btn=document.getElementById('cbtn-'+id);
+  const isCompleted=card.classList.toggle('completed');
+  btn.textContent=isCompleted?'✅ Completed':'✓ Mark Complete'; btn.classList.toggle('done',isCompleted);
+  card.querySelectorAll('.chkbox').forEach(b=>{ if(isCompleted){b.classList.add('on');b.parentElement.classList.add('done-item');}else{b.classList.remove('on');b.parentElement.classList.remove('done-item');}});
+  LS.set('complete_'+id, isCompleted); saveCheckboxes(id); updateProgress();
+}
+function markAllDone(){ topicIds.forEach(id=>{ const card=document.getElementById('card-'+id); card.classList.add('completed'); const btn=document.getElementById('cbtn-'+id); btn.textContent='✅ Completed'; btn.classList.add('done'); card.querySelectorAll('.chkbox').forEach(b=>{b.classList.add('on');b.parentElement.classList.add('done-item');}); LS.set('complete_'+id,true); saveCheckboxes(id); }); updateProgress(); }
+function resetAll(){ topicIds.forEach(id=>{ const card=document.getElementById('card-'+id); card.classList.remove('completed'); const btn=document.getElementById('cbtn-'+id); btn.textContent='✓ Mark Complete'; btn.classList.remove('done'); card.querySelectorAll('.chkbox').forEach(b=>{b.classList.remove('on');b.parentElement.classList.remove('done-item');}); LS.del('complete_'+id); LS.del('chk_'+id); }); updateProgress(); }
+
+function saveCheckboxes(id){
+  const card=document.getElementById('card-'+id);
+  LS.set('chk_'+id, [...card.querySelectorAll('.chkbox')].map(b=>b.classList.contains('on')));
+}
+function chk(box){
+  box.classList.toggle('on'); box.parentElement.classList.toggle('done-item',box.classList.contains('on'));
+  const card=box.closest('.tcard'); if(card) saveCheckboxes(card.id.replace('card-',''));
+  updateProgress();
+}
+
+function updateProgress(){
+  const allBoxes=document.querySelectorAll('.chkbox'); const doneBoxes=document.querySelectorAll('.chkbox.on');
+  const total=allBoxes.length; const done=doneBoxes.length; const pct=total?Math.round(done/total*100):0;
+  document.getElementById('progPct').textContent=pct+'%';
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('chkDone').textContent=done; document.getElementById('chkTotal').textContent=total;
+  const ct=document.querySelectorAll('.tcard.completed').length;
+  document.getElementById('topicDone').textContent=ct; document.getElementById('topicTotal').textContent=topicIds.length;
+  document.getElementById('totalTopics').textContent=total; document.getElementById('doneCount').textContent=done;
+  topicIds.forEach(id=>{ const card=document.getElementById('card-'+id); const mini=document.getElementById('mini-'+id); if(mini) mini.textContent=card.querySelectorAll('.chkbox.on').length+'/'+card.querySelectorAll('.chkbox').length; });
+}
+
+function restoreState(){
+  document.getElementById('globalClock').textContent=fmt(globalSeconds);
+  document.getElementById('allTimeDisp').textContent=fmtShort(allTimeSeconds);
+  document.getElementById('totalTimeDisp').textContent=fmtShort(allTimeSeconds);
+  document.getElementById('gStartDate').textContent=fmtDate(gStartDate);
+  document.getElementById('gEndDate').textContent=fmtDate(gEndDate);
+  topicIds.forEach(id=>{
+    document.getElementById('clock-'+id).textContent=fmt(topicSeconds[id]);
+    document.getElementById('time-'+id).textContent=fmt(topicSeconds[id]);
+    if(topicStartDates[id]){ const el=document.getElementById('tstart-'+id); if(el) el.textContent=fmtDate(topicStartDates[id]); }
+    if(topicEndDates[id]){ const el=document.getElementById('tend-'+id); if(el) el.textContent=fmtDate(topicEndDates[id]); }
+    
+    // Restore Checkboxes
+    const states=LS.get('chk_'+id);
+    if(states){ const boxes=[...document.getElementById('card-'+id).querySelectorAll('.chkbox')]; states.forEach((on,i)=>{ if(boxes[i]&&on){boxes[i].classList.add('on');boxes[i].parentElement.classList.add('done-item');}}); }
+    
+    // Restore Open/Closed Accordion States
+    if(LS.get('open_'+id)) { document.getElementById('card-'+id).classList.add('open'); }
+    
+    // Restore Completion Status
+    if(LS.get('complete_'+id)){ const card=document.getElementById('card-'+id); card.classList.add('completed'); const btn=document.getElementById('cbtn-'+id); btn.textContent='✅ Completed'; btn.classList.add('done'); }
+  });
+}
+
+// Added event listener to catch tab closures seamlessly
+window.addEventListener('beforeunload', () => {
+  if (globalInterval) {
+    LS.set('globalSeconds', globalSeconds);
+    LS.set('allTimeSeconds', allTimeSeconds);
+  }
+  topicIds.forEach(id => {
+    if (topicIntervals[id]) {
+      LS.set('tsec_'+id, topicSeconds[id]);
+    }
+  });
+});
+
+injectDateRows();
+restoreState();
+updateProgress();
+</script>
+</body>
+</html>
